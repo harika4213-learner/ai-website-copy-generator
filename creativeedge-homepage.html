@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CreativeEdge Digital Agency — Vijayawada</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:     #0D0D0D;
+      --paper:   #F7F4EF;
+      --saffron: #E8720C;
+      --teal:    #006E6D;
+      --mist:    #E2DDD6;
+      --light:   #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 5%;
+      position: sticky;
+      top: 0;
+      background: var(--paper);
+      border-bottom: 1px solid var(--mist);
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .logo span { color: var(--saffron); }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.2rem;
+    }
+
+    nav ul a {
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--ink);
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    nav ul a:hover { opacity: 1; }
+
+    .nav-cta {
+      background: var(--saffron);
+      color: var(--light) !important;
+      opacity: 1 !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 2px;
+      font-weight: 500 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: #c5610a !important; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 7rem 5% 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      min-height: 90vh;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 2rem;
+      height: 2px;
+      background: var(--saffron);
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 1.6rem;
+    }
+
+    h1 .accent {
+      color: var(--saffron);
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Signature underline */
+    h1 .accent::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--teal);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: #444;
+      max-width: 480px;
+      margin-bottom: 2.4rem;
+      line-height: 1.75;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--saffron);
+      color: var(--light);
+      padding: 0.85rem 2rem;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover { background: #c5610a; }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--ink);
+      padding: 0.85rem 2rem;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      border: 1.5px solid var(--ink);
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: var(--ink);
+      color: var(--light);
+    }
+
+    /* Hero visual panel */
+    .hero-visual {
+      background: var(--ink);
+      border-radius: 4px;
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-visual::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: var(--saffron);
+      opacity: 0.12;
+    }
+
+    .stat-card {
+      border-left: 3px solid var(--saffron);
+      padding-left: 1.2rem;
+    }
+
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 2.4rem;
+      color: var(--light);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: #888;
+      font-weight: 400;
+      margin-top: 0.25rem;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-location {
+      font-size: 0.75rem;
+      color: #666;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid #1f1f1f;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-location::before {
+      content: '📍';
+      font-size: 0.9rem;
+    }
+
+    /* ── SERVICES ── */
+    .services {
+      background: var(--light);
+      padding: 6rem 5%;
+    }
+
+    .section-header {
+      max-width: 580px;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.8rem;
+    }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      color: #555;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5px;
+      background: var(--mist);
+      border: 1.5px solid var(--mist);
+    }
+
+    .service-card {
+      background: var(--light);
+      padding: 2.4rem 2rem;
+      transition: background 0.25s;
+      cursor: default;
+    }
+
+    .service-card:hover {
+      background: var(--ink);
+    }
+
+    .service-card:hover .service-title,
+    .service-card:hover .service-desc,
+    .service-card:hover .service-icon {
+      color: var(--light);
+    }
+
+    .service-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+      display: block;
+      transition: color 0.25s;
+    }
+
+    .service-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--ink);
+      margin-bottom: 0.7rem;
+      transition: color 0.25s;
+    }
+
+    .service-desc {
+      font-size: 0.875rem;
+      color: #666;
+      line-height: 1.65;
+      transition: color 0.25s;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      padding: 7rem 5%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-block {
+      background: var(--teal);
+      border-radius: 3px;
+      padding: 3.5rem 3rem;
+      color: var(--light);
+    }
+
+    .about-block blockquote {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-block cite {
+      font-size: 0.8rem;
+      font-style: normal;
+      opacity: 0.65;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      background: var(--saffron);
+      color: var(--light);
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.6rem;
+      line-height: 1;
+      box-shadow: 0 4px 20px rgba(232,114,12,0.35);
+    }
+
+    .about-badge small {
+      font-size: 0.62rem;
+      font-weight: 400;
+      font-family: 'Inter', sans-serif;
+      text-align: center;
+      margin-top: 0.2rem;
+      opacity: 0.85;
+    }
+
+    h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .about-text p {
+      color: #555;
+      font-size: 0.98rem;
+      line-height: 1.78;
+      margin-bottom: 1rem;
+    }
+
+    .about-text p:last-of-type { margin-bottom: 1.8rem; }
+
+    /* ── VALUE PROP ── */
+    .value {
+      background: var(--ink);
+      padding: 6rem 5%;
+      color: var(--light);
+    }
+
+    .value .section-eyebrow { color: var(--saffron); }
+
+    .value h2 { color: var(--light); }
+
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 3.5rem;
+      background: #1f1f1f;
+    }
+
+    .value-item {
+      background: var(--ink);
+      padding: 2.5rem 2rem;
+      border-top: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .value-item:hover { border-color: var(--saffron); }
+
+    .value-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--saffron);
+      margin-bottom: 1.2rem;
+    }
+
+    .value-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--light);
+      margin-bottom: 0.7rem;
+    }
+
+    .value-desc {
+      font-size: 0.875rem;
+      color: #888;
+      line-height: 1.7;
+    }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      padding: 6rem 5%;
+      text-align: center;
+      background: var(--saffron);
+      color: var(--light);
+    }
+
+    .cta-strip h2 {
+      color: var(--light);
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      margin-bottom: 1rem;
+    }
+
+    .cta-strip p {
+      font-size: 1.05rem;
+      opacity: 0.88;
+      margin-bottom: 2.2rem;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-white {
+      background: var(--light);
+      color: var(--saffron);
+      padding: 0.9rem 2.4rem;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: 2px;
+      display: inline-block;
+      transition: opacity 0.2s;
+    }
+
+    .btn-white:hover { opacity: 0.9; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0D0D0D;
+      color: #666;
+      padding: 2.5rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+
+    footer .logo { color: var(--light); }
+
+    footer p { max-width: 400px; line-height: 1.5; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero, .about { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero { min-height: auto; padding: 4rem 5% 3rem; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .value-grid { grid-template-columns: 1fr; }
+      .about-badge { right: 0; bottom: -1rem; }
+      nav ul { display: none; }
+    }
+
+    @media (max-width: 580px) {
+      .services-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="logo">Creative<span>Edge</span></a>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#why-us">Why Us</a></li>
+      <li><a href="#contact" class="nav-cta">Get a Free Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="hero-eyebrow">Digital Agency · Vijayawada</p>
+      <h1>Your Business Deserves to <span class="accent">Stand Out</span> Online</h1>
+      <p class="hero-sub">
+        We help local businesses across Andhra Pradesh build powerful digital presences — through strategy, design, and marketing that actually deliver results.
+      </p>
+      <div class="btn-group">
+        <a href="#contact" class="btn-primary">Get a Free Consultation</a>
+        <a href="#services" class="btn-secondary">See Our Services</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="stat-card">
+        <div class="stat-num">150+</div>
+        <div class="stat-label">Local Businesses Grown</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3×</div>
+        <div class="stat-label">Average Traffic Increase for SEO Clients</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">7 Days</div>
+        <div class="stat-label">Average Time to First Deliverable</div>
+      </div>
+      <p class="hero-location">Proudly serving Vijayawada &amp; Andhra Pradesh</p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-header">
+      <p class="section-eyebrow">What We Do</p>
+      <h2>Everything Your Business Needs to Win Online</h2>
+      <p class="section-desc">From your first Instagram post to a fully optimised website — we handle the digital side so you can focus on running your business.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">📱</span>
+        <div class="service-title">Social Media Marketing</div>
+        <p class="service-desc">Engaging content, consistent posting, and community building that turns followers into loyal customers.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🔍</span>
+        <div class="service-title">Search Engine Optimisation</div>
+        <p class="service-desc">Rank higher on Google and get discovered by customers in Vijayawada who are actively searching for what you offer.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🎨</span>
+        <div class="service-title">Graphic Design</div>
+        <p class="service-desc">Logos, brand kits, social creatives, and print materials — built to make your business look as good as it really is.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">💻</span>
+        <div class="service-title">Web Development</div>
+        <p class="service-desc">Fast, mobile-friendly websites designed to convert visitors into enquiries — no bloated templates, built clean from the ground up.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-visual">
+      <div class="about-block">
+        <blockquote>"We don't just run campaigns. We learn your business, understand your customers, and build digital strategies that make a real difference."</blockquote>
+        <cite>— The CreativeEdge Team, Vijayawada</cite>
+      </div>
+      <div class="about-badge">
+        5★
+        <small>Client<br>Rated</small>
+      </div>
+    </div>
+
+    <div class="about-text">
+      <p class="section-eyebrow">About Us</p>
+      <h3>Vijayawada's Digital Growth Partner</h3>
+      <p>
+        CreativeEdge Digital Agency was founded with one clear purpose: to give local businesses in Vijayawada and Andhra Pradesh the same quality of digital marketing that large corporations enjoy — without the large price tag.
+      </p>
+      <p>
+        Our team combines creative thinking with data-driven strategy. Whether you're a retail shop on MG Road, a restaurant in Benz Circle, or a startup ready to scale, we tailor every solution to your business goals, your audience, and your budget.
+      </p>
+      <p>
+        We're not a faceless agency. We're your neighbours — and we're genuinely invested in seeing your business grow.
+      </p>
+      <a href="#contact" class="btn-primary">Let's Work Together →</a>
+    </div>
+  </section>
+
+  <!-- VALUE PROPOSITION -->
+  <section class="value" id="why-us">
+    <div class="section-header">
+      <p class="section-eyebrow">Why CreativeEdge</p>
+      <h2>Digital Marketing Done Right, Right Here in Vijayawada</h2>
+    </div>
+
+    <div class="value-grid">
+      <div class="value-item">
+        <div class="value-num">01</div>
+        <div class="value-title">Local Market Expertise</div>
+        <p class="value-desc">We know the Vijayawada market — the seasons, the festivals, the consumer habits. That local insight shapes every campaign we run.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-num">02</div>
+        <div class="value-title">One Team, Full Service</div>
+        <p class="value-desc">Strategy, design, development, and marketing under one roof. No juggling multiple vendors. One point of contact, end to end.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-num">03</div>
+        <div class="value-title">Transparent Reporting</div>
+        <p class="value-desc">You'll always know what's working. Clear monthly reports in plain language — not jargon-filled dashboards that confuse more than they clarify.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-num">04</div>
+        <div class="value-title">Budgets That Flex With You</div>
+        <p class="value-desc">Affordable packages for small businesses and scalable solutions for those ready to grow. Quality digital marketing shouldn't require a corporate budget.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-num">05</div>
+        <div class="value-title">Fast Turnaround</div>
+        <p class="value-desc">We respect your time. Projects are delivered on schedule, with proactive communication so there are never any surprises.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-num">06</div>
+        <div class="value-title">Results-First Mindset</div>
+        <p class="value-desc">Vanity metrics don't pay your bills. We focus on leads, sales, and real business growth — and we measure everything that matters.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section class="cta-strip" id="contact">
+    <h2>Ready to Grow Your Business Digitally?</h2>
+    <p>Get a free, no-obligation consultation with our team. We'll walk you through exactly what we'd do for your business — and what it would cost.</p>
+    <a href="mailto:hello@creativeedge.in" class="btn-white">Book Your Free Consultation</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="#" class="logo">Creative<span>Edge</span></a>
+    <p>Vijayawada, Andhra Pradesh, India · hello@creativeedge.in</p>
+    <p>© 2026 CreativeEdge Digital Agency. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
