@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Services — CreativeEdge Digital Agency · Vijayawada</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:      #0D0D0D;
+      --paper:    #F7F4EF;
+      --saffron:  #E8720C;
+      --teal:     #006E6D;
+      --mist:     #E2DDD6;
+      --light:    #FFFFFF;
+      --mid:      #555555;
+
+      /* Per-service accent variables (swapped in per section) */
+      --s-accent: var(--saffron);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 5%;
+      position: sticky;
+      top: 0;
+      background: var(--paper);
+      border-bottom: 1px solid var(--mist);
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .logo span { color: var(--saffron); }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.2rem;
+      align-items: center;
+    }
+    nav ul a {
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--ink);
+      opacity: 0.65;
+      transition: opacity 0.2s;
+    }
+    nav ul a:hover, nav ul a.active { opacity: 1; }
+    .nav-cta {
+      background: var(--saffron);
+      color: var(--light) !important;
+      opacity: 1 !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 2px;
+    }
+    .nav-cta:hover { background: #c5610a; }
+
+    /* ─── PAGE HEADER ─── */
+    .page-header {
+      background: var(--ink);
+      color: var(--light);
+      padding: 6rem 5% 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Signature element: large ghost word in the background */
+    .page-header::before {
+      content: 'SERVICES';
+      position: absolute;
+      right: 3%;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(5rem, 14vw, 12rem);
+      letter-spacing: -0.05em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.07);
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .page-header-inner {
+      max-width: 680px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--saffron);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1.4rem;
+    }
+    .eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 2rem;
+      height: 2px;
+      background: var(--saffron);
+      flex-shrink: 0;
+    }
+
+    .page-header h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--light);
+      margin-bottom: 1.4rem;
+    }
+
+    .page-header p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.75;
+      max-width: 540px;
+    }
+
+    /* ─── SERVICE NAV PILLS ─── */
+    .service-nav {
+      background: var(--light);
+      border-bottom: 1px solid var(--mist);
+      padding: 0 5%;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .service-nav::-webkit-scrollbar { display: none; }
+
+    .service-nav a {
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--mid);
+      padding: 1.1rem 1.6rem;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      transition: color 0.2s, border-color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .service-nav a:hover {
+      color: var(--ink);
+      border-bottom-color: var(--mist);
+    }
+
+    /* ─── SERVICE SECTIONS ─── */
+    .service-section {
+      padding: 6rem 5%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      border-bottom: 1px solid var(--mist);
+    }
+
+    /* Alternate layout every other section */
+    .service-section.flip { direction: rtl; }
+    .service-section.flip > * { direction: ltr; }
+
+    /* Light vs dark banding */
+    .service-section.band-light { background: var(--light); }
+    .service-section.band-paper { background: var(--paper); }
+
+    /* ── Visual panel ── */
+    .service-visual {
+      border-radius: 3px;
+      overflow: hidden;
+      position: relative;
+      min-height: 380px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2.5rem;
+    }
+
+    .service-visual.smm  { background: #0F2027; }
+    .service-visual.seo  { background: #006E6D; }
+    .service-visual.gfx  { background: #1a0533; }
+    .service-visual.web  { background: #0D0D0D; }
+
+    /* Abstract decorative layer — different per service */
+    .service-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .smm::before {
+      background:
+        radial-gradient(circle at 80% 20%, rgba(232,114,12,0.35) 0%, transparent 55%),
+        radial-gradient(circle at 20% 80%, rgba(0,110,109,0.25) 0%, transparent 50%);
+    }
+
+    .seo::before {
+      background:
+        radial-gradient(circle at 15% 15%, rgba(232,114,12,0.4) 0%, transparent 50%),
+        radial-gradient(circle at 90% 90%, rgba(255,255,255,0.06) 0%, transparent 45%);
+    }
+
+    .gfx::before {
+      background:
+        radial-gradient(circle at 70% 30%, rgba(232,114,12,0.5) 0%, transparent 45%),
+        radial-gradient(circle at 20% 70%, rgba(120,40,200,0.3) 0%, transparent 50%);
+    }
+
+    .web::before {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(0,110,109,0.4) 0%, transparent 55%),
+        radial-gradient(circle at 50% 100%, rgba(232,114,12,0.2) 0%, transparent 45%);
+    }
+
+    .visual-label {
+      position: relative;
+      z-index: 1;
+    }
+
+    .visual-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: block;
+      filter: drop-shadow(0 0 20px rgba(232,114,12,0.6));
+    }
+
+    .visual-tag {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--light);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+
+    .visual-sub {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 0.4rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ── Copy panel ── */
+    .service-copy {}
+
+    .service-id {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--saffron);
+      margin-bottom: 0.8rem;
+    }
+
+    .service-copy h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    .service-copy .intro {
+      font-size: 1rem;
+      color: var(--mid);
+      line-height: 1.75;
+      margin-bottom: 2rem;
+      border-left: 3px solid var(--saffron);
+      padding-left: 1rem;
+    }
+
+    /* Benefits list */
+    .benefits {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-bottom: 2.4rem;
+    }
+
+    .benefits li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .benefit-check {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .benefit-check svg {
+      width: 11px;
+      height: 11px;
+      stroke: #fff;
+      stroke-width: 2.5;
+      fill: none;
+    }
+
+    .benefit-content {}
+
+    .benefit-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+    }
+
+    .benefit-desc {
+      font-size: 0.85rem;
+      color: #777;
+      line-height: 1.6;
+    }
+
+    /* Service CTA */
+    .service-cta-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-saffron {
+      background: var(--saffron);
+      color: var(--light);
+      padding: 0.8rem 1.8rem;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.875rem;
+      border-radius: 2px;
+      display: inline-block;
+      transition: background 0.2s;
+    }
+    .btn-saffron:hover { background: #c5610a; }
+
+    .btn-ghost {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+    .btn-ghost:hover { opacity: 1; }
+    .btn-ghost::after { content: '→'; }
+
+    /* ─── PROCESS STRIP ─── */
+    .process {
+      background: var(--ink);
+      padding: 5.5rem 5%;
+      color: var(--light);
+    }
+
+    .process-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3.5rem;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .process-header h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: var(--light);
+      max-width: 400px;
+    }
+
+    .process-header p {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.9rem;
+      max-width: 320px;
+      line-height: 1.65;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      position: relative;
+    }
+
+    /* Connecting line */
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 18px;
+      left: calc(12.5% + 10px);
+      right: calc(12.5% + 10px);
+      height: 1px;
+      background: rgba(255,255,255,0.12);
+      z-index: 0;
+    }
+
+    .process-step {
+      padding: 0 1rem 0 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-dot {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--saffron);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: var(--light);
+      margin-bottom: 1.5rem;
+    }
+
+    .step-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--light);
+      margin-bottom: 0.5rem;
+    }
+
+    .step-desc {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.65;
+    }
+
+    /* ─── CLOSING CTA ─── */
+    .closing-cta {
+      background: var(--saffron);
+      padding: 5.5rem 5%;
+      text-align: center;
+    }
+
+    .closing-cta h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      letter-spacing: -0.03em;
+      color: var(--light);
+      margin-bottom: 1rem;
+    }
+
+    .closing-cta p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 2.2rem;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+
+    .btn-white {
+      background: var(--light);
+      color: var(--saffron);
+      padding: 0.9rem 2.4rem;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: 2px;
+      display: inline-block;
+      transition: opacity 0.2s;
+    }
+    .btn-white:hover { opacity: 0.9; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #0D0D0D;
+      color: #555;
+      padding: 2.5rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    footer .logo { color: var(--light); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 960px) {
+      .service-section {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding: 4rem 5%;
+      }
+      .service-section.flip { direction: ltr; }
+      .service-visual { min-height: 260px; }
+      .process-steps { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+      .process-steps::before { display: none; }
+      .process-header { flex-direction: column; align-items: flex-start; }
+      nav ul { display: none; }
+    }
+
+    @media (max-width: 580px) {
+      .process-steps { grid-template-columns: 1fr; }
+      .service-nav a { padding: 1rem 1.2rem; font-size: 0.75rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a href="creativeedge-homepage.html" class="logo">Creative<span>Edge</span></a>
+    <ul>
+      <li><a href="creativeedge-homepage.html#about">About</a></li>
+      <li><a href="#" class="active">Services</a></li>
+      <li><a href="creativeedge-homepage.html#why-us">Why Us</a></li>
+      <li><a href="#contact" class="nav-cta">Get a Free Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── PAGE HEADER ── -->
+  <header class="page-header">
+    <div class="page-header-inner">
+      <p class="eyebrow">What We Offer</p>
+      <h1>Digital Services Built for Vijayawada Businesses</h1>
+      <p>Every service we offer is designed with one goal: to help your business grow online — visibly, measurably, and sustainably.</p>
+    </div>
+  </header>
+
+  <!-- ── SERVICE QUICK NAV ── -->
+  <nav class="service-nav" aria-label="Jump to service">
+    <a href="#social-media">📱 Social Media Marketing</a>
+    <a href="#seo">🔍 SEO</a>
+    <a href="#graphic-design">🎨 Graphic Design</a>
+    <a href="#web-development">💻 Web Development</a>
+  </nav>
+
+  <!-- ════════════════════════════════
+       SERVICE 1 — SOCIAL MEDIA MARKETING
+       ════════════════════════════════ -->
+  <section class="service-section band-light" id="social-media">
+
+    <div class="service-visual smm">
+      <div class="visual-label">
+        <span class="visual-icon">📱</span>
+        <div class="visual-tag">Social Media<br>Marketing</div>
+        <div class="visual-sub">Build · Engage · Convert</div>
+      </div>
+    </div>
+
+    <div class="service-copy">
+      <p class="service-id">Service 01 · Social Media Marketing</p>
+      <h2>Turn Followers Into Paying Customers</h2>
+      <p class="intro">
+        Social media is where your customers spend their time. We make sure your business shows up there — consistently, creatively, and with content that actually drives action.
+      </p>
+
+      <ul class="benefits">
+        <li>
+          <span class="benefit-check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </span>
+          <div class="benefit-content">
+            <div class="benefit-title">Strategy-Led Content Planning</div>
+            <div class="benefit-desc">We build a monthly content calendar tailored to your audience, local events, and business goals — no guesswork, no recycled templates.</div>
+          </div>
+        </li>
+        <li>
+          <span class="benefit-check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </span>
+          <div class="benefit-content">
+            <div class="benefit-title">Platform-Specific Creative</div>
+            <div class="benefit-desc">From Instagram Reels to Facebook posts and WhatsApp broadcast campaigns — every piece of content is designed for the platform and the audience on it.</div>
+          </div>
+        </li>
+        <li>
+          <span class="benefit-check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </span>
+          <div class="benefit-content">
+            <div class="benefit-title">Community Management</div>
+            <div class="benefit-desc">We respond to comments, handle DMs, and manage your online reputation so you build genuine relationships with your customers — not just a follower count.</div>
+          </div>
+        </li>
+        <li>
+          <span class="benefit-check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </span>
+          <div class="benefit-content">
+            <div class="benefit-title">Paid Ad Campaigns</div>
+            <div class="benefit-desc">Targeted Meta and Instagram ad campaigns that reach the right people in Vijayawada — and convert them into enquiries, walk-ins, and sales.</div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="service-cta-row">
+        <a href="#contact" class="btn-saffron">Start Growing on Social →</a>
+        <a href="#contact" class="btn-ghost">Request a Free Audit</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ════════════════════════════════
+       SERVICE 2 — SEO
+       ════════════════════════════════ -->
+  <section class="service-section flip band-paper" id="seo">
+
+    <div class="service-visual seo">
+      <div class="visual-label">
+        <span class="visual-icon">🔍</span>
+        <div class="visual-tag">Search Engine<br>Optimisation</div>
+        <div class="visual-sub">Rank · Attract · Retain</div>
+      </div>
+    </div>
+
+    <div class="service-copy">
+      <p class="service-id">Service 02 · SEO</p>
+      <h2>Get Found on Google When It Matters Most</h2>
+      <p class="intro">
+        When someone in Vijayawada searches for what you offer, you need to show up — not your competitor. Our SEO strategies are built for long-term, sustainable visibility.
+      </p>
+
+      <ul class="benefits">
+        <li>
+          <span class="benefit-check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </span>
+          <div class="benefit-content">
+            <div class="benefit-title">Local SEO & Google Business Optimisation</div>
+            <div class="benefit-desc">We optimise your Google Business Profile and local citations so your business appears when nearby customers search for your products or services.</div>
+          </div>
+        </li>
+        <li>
+          <span class="benefit-check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </span>
+          <div class="benefit-content">
+            <div class="benefit-title">Keyword Research Rooted in Real Intent</div>
+            <div class="benefit-desc">We identify the exact terms your potential customers are using — in Telugu and English — so your website ranks for searches that actually convert.</div>
+          </div>
+        </li>
+        <li>
+          <span class="benefit-check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </span>
+          <div class="benefit-content">
+            <div class="benefit-title">On-Page & Technical SEO</div>
+            <div class="benefit-desc">From meta tags and site structure to page speed and mobile optimisation — we handle the technical foundations that search engines reward.</div>
+          </div>
+        </li>
+        <li>
+          <span class="benefit-check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </span>
+          <div class="benefit-content">
+            <div class="benefit-title">Monthly Ranking Reports in Plain Language</div>
+            <div class="benefit-desc">No confusing dashboards. Every month you receive a clear summary of your rankings, traffic growth, and what we're doing next — and why.</div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="service-cta-row">
+        <a href="#contact" class="btn-saffron">Improve My Google Ranking →</a>
+        <a href="#contact" class="btn-ghost">Free SEO Health Check</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ════════════════════════════════
+       SERVICE 3 — GRAPHIC DESIGN
+       ════════════════════════════════ -->
+  <section class="service-section band-light" id="graphic-design">
+
+    <div class="service-visual gfx">
+      <div class="visual-label">
+        <span class="visual-icon">🎨</span>
+        <div class="visual-tag">Graphic<br>Design</div>
+        <div class="visual-sub">Brand · Create · Impress</div>
+      </div>
+    </div>
+
+    <div class="service-copy">
+      <p class="service-id">Service 03 · Graphic Design</p>
+      <h2>A Brand That Looks as Professional as It Is</h2>
+      <p class="intro">
+        First impressions happen in seconds. Great design builds trust instantly — and keeps your business memorable long after the scroll. We make your visual identity do the heavy lifting.
+      </p>
+
+      <ul class="benefits">
+        <li>
+          <span class="benefit-check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </span>
+          <div class="benefit-content">
+            <div class="benefit-title">Logo Design & Brand Identity</div>
+            <div class="benefit-desc">We design logos and brand kits — colours, fonts, and visual guidelines — that communicate who you are and why customers should choose you over anyone else.</div>
+          </div>
+        </li>
+        <li>
+          <span class="benefit-check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </span>
+          <div class="benefit-content">
+            <div class="benefit-title">Social Media Creatives</div>
+            <div class="benefit-desc">Eye-catching posts, stories, banners, and ad creatives designed to stop the scroll and communicate your message clearly at a glance.</div>
+          </div>
+        </li>
+        <li>
+          <span class="benefit-check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </span>
+          <div class="benefit-content">
+            <div class="benefit-title">Print & Marketing Materials</div>
+            <div class="benefit-desc">Visiting cards, brochures, flex banners, menus, and flyers — print-ready designs built for Vijayawada's local print vendors, with zero quality compromise.</div>
+          </div>
+        </li>
+        <li>
+          <span class="benefit-check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </span>
+          <div class="benefit-content">
+            <div class="benefit-title">Consistent Across Every Touchpoint</div>
+            <div class="benefit-desc">From your shopfront signage to your WhatsApp DP, every design is cohesive — so your business looks polished everywhere customers encounter you.</div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="service-cta-row">
+        <a href="#contact" class="btn-saffron">Redesign My Brand →</a>
+        <a href="#contact" class="btn-ghost">See Sample Work</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ════════════════════════════════
+       SERVICE 4 — WEB DEVELOPMENT
+       ════════════════════════════════ -->
+  <section class="service-section flip band-paper" id="web-development">
+
+    <div class="service-visual web">
+      <div class="visual-label">
+        <span class="visual-icon">💻</span>
+        <div class="visual-tag">Web<br>Development</div>
+        <div class="visual-sub">Build · Launch · Convert</div>
+      </div>
+    </div>
+
+    <div class="service-copy">
+      <p class="service-id">Service 04 · Web Development</p>
+      <h2>A Website That Works as Hard as You Do</h2>
+      <p class="intro">
+        Your website is your most valuable salesperson — available 24/7, seen by everyone. We build websites that are fast, mobile-ready, and designed to turn visitors into customers.
+      </p>
+
+      <ul class="benefits">
+        <li>
+          <span class="benefit-check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </span>
+          <div class="benefit-content">
+            <div class="benefit-title">Mobile-First, Lightning-Fast Websites</div>
+            <div class="benefit-desc">Over 85% of users in India browse on mobile. Every site we build loads fast on any device and connection speed — because slow websites lose customers.</div>
+          </div>
+        </li>
+        <li>
+          <span class="benefit-check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </span>
+          <div class="benefit-content">
+            <div class="benefit-title">Designed to Convert, Not Just Impress</div>
+            <div class="benefit-desc">We place calls-to-action, contact forms, and trust signals strategically — so visitors know exactly what to do next, and more of them actually do it.</div>
+          </div>
+        </li>
+        <li>
+          <span class="benefit-check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </span>
+          <div class="benefit-content">
+            <div class="benefit-title">SEO-Ready From Day One</div>
+            <div class="benefit-desc">Clean code, proper heading structure, optimised images, and schema markup — your site is built to rank from the moment it goes live.</div>
+          </div>
+        </li>
+        <li>
+          <span class="benefit-check">
+            <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+          </span>
+          <div class="benefit-content">
+            <div class="benefit-title">Easy to Update, Easy to Own</div>
+            <div class="benefit-desc">We hand over a website you can manage yourself — no technical knowledge required. And if you ever need updates, we're just a message away.</div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="service-cta-row">
+        <a href="#contact" class="btn-saffron">Build My Website →</a>
+        <a href="#contact" class="btn-ghost">View Past Projects</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── HOW WE WORK ── -->
+  <section class="process">
+    <div class="process-header">
+      <h2>How We Get Started With You</h2>
+      <p>From first call to first deliverable, we keep things clear, collaborative, and fast.</p>
+    </div>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-dot">1</div>
+        <div class="step-title">Free Consultation</div>
+        <p class="step-desc">We learn about your business, goals, and current challenges — no sales pressure, just an honest conversation.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-dot">2</div>
+        <div class="step-title">Custom Proposal</div>
+        <p class="step-desc">We put together a tailored plan and clear pricing — so you know exactly what you're getting and what it costs.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-dot">3</div>
+        <div class="step-title">We Get to Work</div>
+        <p class="step-desc">Your project kicks off within days. We keep you updated at every stage, with regular check-ins and zero surprises.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-dot">4</div>
+        <div class="step-title">Deliver & Grow</div>
+        <p class="step-desc">We launch, measure results, and keep optimising — because our job isn't done when the project goes live.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CLOSING CTA ── -->
+  <section class="closing-cta" id="contact">
+    <h2>Not Sure Which Service You Need?</h2>
+    <p>That's what we're here for. Book a free 30-minute consultation and we'll help you figure out exactly where to focus your digital efforts first.</p>
+    <a href="mailto:hello@creativeedge.in" class="btn-white">Book a Free Consultation</a>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <a href="creativeedge-homepage.html" class="logo">Creative<span>Edge</span></a>
+    <p>Vijayawada, Andhra Pradesh, India · hello@creativeedge.in</p>
+    <p>© 2026 CreativeEdge Digital Agency. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
